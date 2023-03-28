@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>My first three.js app</title>
+    <style>
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <script type="module">
+        import * as THREE from 'https://unpkg.com/three/build/three.module.js';
+
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color('rgb(5,15,10)')
+        // scene.fog = new THREE.Fog(0X000000, 0.1, 10)
+
+        // const loader = new THREE.TextureLoader();
+        // loader.load('./Color.png', function (texture) {
+        //     scene.background = texture;
+        // })
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const newCamera = new THREE.OrthographicCamera(-4, -5, 5, -4, 3, 10);
+        const helper = new THREE.CameraHelper(newCamera)
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+        scene.add(helper)
+
+        const geometry = new THREE.BoxGeometry(1, 1, 1);
+        const material = new THREE.MeshBasicMaterial({ color: 0x00ffdd });
+        const cube = new THREE.Mesh(geometry, material);
+        scene.add(cube);
+
+        // camera.position.z = -5;
+        // newCamera.position.z = -10
+
+        var i = 0
+        function animate() {
+            requestAnimationFrame(animate);
+            camera.lookAt(newCamera.position)
+            camera.position.x = Math.cos(i) * 30
+            camera.position.z = Math.sin(i) * 30
+            i += 0.01
+            // cube.rotation.x += 0.04;
+            // cube.rotation.y += 0.04;
+
+            renderer.render(scene, camera);
+        }
+
+        animate();
+    </script>
+</body>
+
+</html>
