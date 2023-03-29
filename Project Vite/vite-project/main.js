@@ -7,7 +7,7 @@ const scene = new THREE.Scene()
 
 //Create our sphere
 const geometry = new THREE.SphereGeometry(3, 64, 64);
-const material = new THREE.MeshStandardMaterial({ color: '#00ff83', roughness: 0.3, opacity: 0.8, metalness: 0.35 });
+const material = new THREE.MeshStandardMaterial({ color: '#00ff83', roughness: 0.3, metalness: 0.35 });
 const sphere = new THREE.Mesh(geometry, material);
 scene.add(sphere);
 
@@ -24,7 +24,7 @@ light1.intensity = 1.1
 scene.add(light1)
 
 const light2 = new THREE.PointLight(0xffa51f, 1, 100);
-light2.position.set(20, -5, -3);
+light2.position.set(0, -5, -3);
 light2.intensity = 1.7
 scene.add(light2)
 
@@ -94,6 +94,6 @@ window.addEventListener('mousemove', (e) => {
     rgb = [Math.round((e.pageX / sizes.width) * 255), Math.round((e.pageY / sizes.width) * 255), 127]
     let newColor = new THREE.Color(`rgb(${rgb[0]},${rgb[1]},${rgb[2]})`)
     gsap.to(sphere.material.color, { r: newColor.r, g: newColor.g, b: newColor.b })
-    gsap.fromTo(".title", { r: newColor.r, g: newColor.g, b: newColor.b })
+    gsap.to(".title", { color: `rgb(${rgb[0]},${rgb[1]},${rgb[2]})` })
   }
 })
