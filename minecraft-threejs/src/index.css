@@ -28,3 +28,24 @@ body {
     text-shadow: 0 0 0.4rem black;
     opacity: 50%;
 }
+
+.selectTexture {
+    background-color: rgba(119, 136, 153, 0.221);
+    padding: 1rem;
+    border: 4px solid #000;
+    position: absolute;
+    display: flex;
+    gap: 1rem;
+    bottom: 2rem;
+    left: 30%;
+}
+
+.selectTexture img {
+    width: 60px;
+    image-rendering: pixelated;
+    border: 4px solid #000;
+}
+
+.selectTexture img.selected {
+    border-color: rgb(190, 0, 0);
+}

@@ -5,15 +5,16 @@ import { useKeyboards } from '../hooks/useKeyboards'
 
 
 export const TextureSelector = () => {
-    const [visible, setVisible] = useState(false)
+    const [visible, setVisible] = useState(true)
     const [texture, setTexture] = useStore(state => [state.texture, state.setTexture])
 
     const {
         dirt,
         glass,
         stone,
+        grass,
         bricks,
-        snow,
+        now,
         wood
     } = useKeyboards()
 
@@ -23,8 +24,9 @@ export const TextureSelector = () => {
             dirt,
             glass,
             stone,
+            grass,
             bricks,
-            snow,
+            now,
             wood
         }
 
@@ -38,20 +40,35 @@ export const TextureSelector = () => {
         console.log(texture)
         return () => {
         }
-    }, [dirt, glass, stone, bricks, snow, wood])
+    }, [dirt, glass, stone, grass, bricks, now, wood])
+
+    // useEffect(() => {
+    //     const visibilityTexture = setTimeout(() => {
+    //         setVisible(false)
+    //     }, 1500)
+    //     setVisible(true)
+    //     return () => {
+    //         clearTimeout(visibilityTexture)
+    //     }
+    // }, [texture])
+
+
+
     if (!visible) {
         return null
     }
+    console.log(images)
     return (
         <div className='selectTexture'>
             {
-                Object.entries(images).map(([textureName, texture]) => {
+                Object.entries(images).map(([imgKey, img]) => {
+                    // let tex = imgKey.slice(0, tex.length - 3)
                     return (
                         <img
-                            key={textureName}
-                            src={texture}
-                            alt={textureName}
-                            onClick={() => setTexture(textureName)}
+                            className={texture === imgKey.replace('Img', '') ? 'selected' : ''}
+                            key={imgKey}
+                            src={img}
+                            alt={imgKey}
                         />
                     )
                 })

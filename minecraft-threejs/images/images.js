@@ -2,8 +2,8 @@ import grassImg from './moss_block.jpg'
 export { grassImg }
 import dirtImg from './dirt.jpg'
 export { dirtImg }
-import logImg from './snow.jpg'
-export { logImg }
+import nowImg from './snow.jpg'
+export { nowImg }
 import glassImg from './glass.png'
 export { glassImg }
 import woodImg from './oak_log.jpg'

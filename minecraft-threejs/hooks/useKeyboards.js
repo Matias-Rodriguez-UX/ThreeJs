@@ -6,12 +6,13 @@ const ACTION_KEYBOARD_MAP = {
     KeyA: 'moveLeft',
     KeyD: 'moveRight',
     Space: 'jump',
-    Digit1: 'dirt',
-    Digit2: 'glass',
-    Digit3: 'stone',
-    Digit4: 'bricks',
-    Digit5: 'snow',
-    Digit6: 'wood',
+    Digit1: 'bricks',
+    Digit2: 'dirt',
+    Digit3: 'glass',
+    Digit4: 'grass',
+    Digit5: 'now',
+    Digit6: 'stone',
+    Digit7: 'wood',
 }
 export const useKeyboards = () => {
     const [actions, setAction] = useState({
@@ -22,9 +23,10 @@ export const useKeyboards = () => {
         jump: false,
         dirt: false,
         glass: false,
+        grass: false,
         stone: false,
         bricks: false,
-        snow: false,
+        now: false,
         wood: false
     })
     useEffect(() => {
