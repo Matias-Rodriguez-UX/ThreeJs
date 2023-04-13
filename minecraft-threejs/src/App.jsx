@@ -15,7 +15,6 @@ function App() {
         <Sky sunPosition={[40, 15, 20]} />
         <ambientLight intensity={0.4} />
         <Fpv />
-
         <Physics>
           <Player />
           <Ground />
